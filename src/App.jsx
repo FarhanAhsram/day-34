@@ -1,8 +1,13 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { decrement, increment } from "./reducer/counterSlice";
 import Card from "./components/Card";
+import Modal from "./components/Modal";
+import { toggleModal } from "./reducer/modalSlice";
+import ToDoComponent from "./components/ToDoComponent";
+import ToDoComponentById from "./components/ToDoByIdComponent";
 
 const App = () => {
+  const toggle = useSelector((state) => state.modal.value);
   const dispatch = useDispatch();
 
   return (
@@ -22,7 +27,28 @@ const App = () => {
       >
         Decrement
       </button>
-      <Card/>
+      <button
+        type="button"
+        className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+        onClick={() => console.log("data fetch")}
+      >
+        Data Fetch
+      </button>
+
+      {/* Modal */}
+      {/* <button
+        type="button"
+        className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+        onClick={() => dispatch(toggleModal())}
+      >
+        Modal
+      </button>
+
+      {toggle && <Modal />} */}
+
+      <Card />
+      <ToDoComponent />
+      <ToDoComponentById />
     </>
   );
 };
