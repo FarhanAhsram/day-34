@@ -19,9 +19,9 @@ const ToDoComponent = () => {
   }, [dispatch]);
 
   //pengecekan code & API berjalan atau tidak
-//   console.log("todo", todo);
-//   console.log("status", status);
-//   console.log("error", error);
+  console.log("todo", todo);
+  console.log("status", status);
+  console.log("error", error);
 
   //early return untuk loading
   if (status === "loading") return <Loading />;
